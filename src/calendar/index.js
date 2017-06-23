@@ -157,12 +157,13 @@ class Calendar extends Component {
       const markingExists = this.props.markedDates ? true : false;
       dayComp = (
         <DayComp
-            key={id}
-            state={state}
-            theme={this.props.theme}
-            onPress={this.pressDay.bind(this, day)}
-            marked={this.getDateMarking(day)}
-            markingExists={markingExists}
+          isWeekend={(id === 5 || id === 6)}
+          key={id}
+          state={state}
+          theme={this.props.theme}
+          onPress={this.pressDay.bind(this, day)}
+          marked={this.getDateMarking(day)}
+          markingExists={markingExists}
           >
             {day.getDate()}
           </DayComp>
@@ -217,7 +218,6 @@ class Calendar extends Component {
           addMonth={this.addMonth}
           showIndicator={indicator}
           firstDay={this.props.firstDay}
-          renderArrow={this.props.renderArrow}
           monthFormat={this.props.monthFormat}
         />
         {weeks}

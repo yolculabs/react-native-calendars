@@ -63,10 +63,11 @@ class CalendarList extends Component {
     this.lastScrollPosition = -1000;
   }
 
-  renderCalendar(row) {
+  renderCalendar(row, s, i) {
     if (row.getTime) {
       return (
         <Calendar
+          i={i}
           theme={this.props.theme}
           selected={this.props.selected}
           style={[{height: calendarHeight}, this.style.calendar]}
