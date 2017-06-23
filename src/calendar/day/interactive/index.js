@@ -109,11 +109,16 @@ class Day extends Component {
       textStyle.push(this.style.disabledText);
     } else if (this.props.state === 'today') {
       textStyle.push(this.style.todayText);
+    } else if (this.props.state === 'selected') {
+      textStyle.push({color: "#fff", fontWeight: "500"});
+    } else if (this.props.isWeekend) {
+      textStyle.push({fontWeight: "bold"});
     }
 
     if (this.props.marked) {
       containerStyle.push({
-        borderRadius: 17
+        borderRadius: 50,
+        zIndex: 9,
       });
 
       const flags = this.markingStyle;
@@ -138,7 +143,9 @@ class Day extends Component {
           backgroundColor: flags.startingDay.color
         };
         containerStyle.push({
-          backgroundColor: flags.startingDay.color
+          backgroundColor: "#23BD84",
+          zIndex: 9,
+          // left: -1
         });
       } else if (flags.endingDay && !flags.startingDay) {
         rightFillerStyle = {
@@ -147,8 +154,10 @@ class Day extends Component {
         leftFillerStyle = {
           backgroundColor: flags.endingDay.color
         };
+        textStyle.push({color: "#fff", fontWeight: "500"});
         containerStyle.push({
-          backgroundColor: flags.endingDay.color
+          backgroundColor: "#23BD84",
+          zIndex: 9,
         });
       } else if (flags.day) {
         leftFillerStyle = {backgroundColor: flags.day.color};
